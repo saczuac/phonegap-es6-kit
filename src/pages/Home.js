@@ -1,5 +1,4 @@
 import Application from 'Application';
-import Project from 'pages/Project';
 import h from 'hyperscript';
 import render from 'lib/render';
 import Store from 'lib/store';
