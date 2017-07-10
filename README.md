@@ -6,6 +6,7 @@
 ### Steps
  
 + `git clone git@10.25.253.3:DPD/phonegap-template.git`
++ `mv phonegap-template project-name`
 + Edit **package.json** => 
    + **widget** => id="change.me.please"
    + **name**
