@@ -10,7 +10,7 @@
 + `cd project-name`
 + `git remote rm origin` => Change origin to the remote repo
 + Edit **package.json** => 
-   + **name**
+   + **name** => Must be sluggable name like: hello-world
    + **description**
    + **author**
 + Edit **config.xml** =>
