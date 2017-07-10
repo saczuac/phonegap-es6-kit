@@ -7,6 +7,8 @@
  
 + `git clone git@10.25.253.3:DPD/phonegap-template.git`
 + `mv phonegap-template project-name`
++ `cd project-name`
++ `git remote rm origin` => Change origin to the remote repo
 + Edit **package.json** => 
    + **widget** => id="change.me.please"
    + **name**
