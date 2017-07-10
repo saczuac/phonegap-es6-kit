@@ -10,11 +10,11 @@
 + `cd project-name`
 + `git remote rm origin` => Change origin to the remote repo
 + Edit **package.json** => 
-   + **widget** => id="change.me.please"
    + **name**
    + **description**
    + **author**
 + Edit **config.xml** =>
+   + **widget** => id="change.me.please"
    + `<name>`
    + `<description>`
    + `<author>`
