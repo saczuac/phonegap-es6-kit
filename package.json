@@ -6,7 +6,8 @@
   "scripts": {
     "start": "gulp",
     "build:production": "NODE_ENV=production gulp build",
-    "build": "gulp build"
+    "build": "gulp build",
+    "postbuild": "cordova platform rm browser && cordova platform add browser && phonegap serve"
   },
   "devDependencies": {
     "babel-plugin-add-module-exports": "^0.2.1",

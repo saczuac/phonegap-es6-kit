@@ -1,31 +1,35 @@
 import Home from 'pages/Home';
+// import SplashLogin from 'pages/SplashLogin';
 import { sameObject } from 'lib/util';
 import localforage from 'localforage';
+import Config from 'lib/config';
 
 const Application = {
-    historyStack: [],
+    historyStack: null,
 
     current: null,
 
     containers: {
         root: document.getElementById('root'),
-        // home: document.getElementById('home'),
+        // restore: ()=> document.getElementById('restore'),
+        // search: ()=> document.getElementById('search'),
+        // results: ()=> document.getElementById('results'),
     },
 
     init(appElement) {
         Application.appElement = appElement || document.getElementById('root')
+        Application.historyStack = []
+        Application.current = null
         window.localforage = localforage
-        localforage.clear()
+
+        // window.setInterval(function(){
+        //     localforage.clear()
+        // }, Config.clearInterval);
+
         Application.go(Home, {})
         return Application
     },
 
-    /**
-     * Monta | Navega a una página específica
-     * @param  {Page} page Page en ./pages/. La página debe entender el método render(props = {})
-     * @param  {Object} props Parámetros para la página.
-     * @return {Application} instancia
-     */
     go(page, props = {}) {
 
         const next = {
@@ -33,25 +37,31 @@ const Application = {
             props
         };
 
-        if (Application.current && !sameObject(Application.current, next)) {
-            Application.historyStack.push(Application.current);
-        }
+        // if (next.page != SplashLogin) {
+            if (Application.current && !sameObject(Application.current, next)) {
+                Application.historyStack.push(Application.current);
+            }    
+            Application.current = next;
+        // }
 
-        Application.current = next;
-
+        page.init();
         page.render(props);
 
         return Application;
     },
 
-    back() {
+    back(props = false) {
         if (Application.historyStack.length > 0) {
             const prev = Application.historyStack.pop();
+            if (prev.page == Home) {
+                navigator.app.exitApp();
+            }
 
+            let newProps = props || prev.props;
             Application.current = prev;
 
             Application.go(prev.page, {
-                ...prev.props,
+                ...newProps,
             });
         }
 
