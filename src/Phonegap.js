@@ -1,6 +1,10 @@
 import Application from 'Application'
 import Config from 'lib/config'
-import Home from 'pages/Home';
+import Home from 'pages/Home/Home';
+import Notifications from 'lib/Notifications';
+import { showAlert } from 'lib/util';
+import Store from 'lib/store';
+import localforage from 'localforage';
 
 /* 
     Phonegap Confs
@@ -12,27 +16,28 @@ window.app = {
 
     bindEvents() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        // document.addEventListener('offline', this.onOffline, false);
         document.addEventListener("backbutton", this.onBackButton, false);
     },
 
     onDeviceReady() {
-        Config.init();
+        Config.init()
+
+        if (Config.lockOrientation)
+            screen.orientation.lock('portrait')
+
+        window.connFlag = true;
+        checkConnection();
+
+        if (navigator.connection.type == Connection.NONE) {
+            showAlert('No hay conexión a internet', () => {})
+            setTimeout(() => {
+                // navigator.app.exitApp();
+            },
+            Config.timeout * 1000)
+
+        } 
         Application.init();
-    },
-
-    onOffline() {
-        // navigator.notification.alert(
-        //     'Su dispositivo necesita tener conexión a internet para reproducir',
-        //     () => null,
-        //     'Error en la conexión', 'Reintentar');
-    },
-
-    onSlowNetwork() {
-        // navigator.notification.alert(
-        //     'La conexión es demasiado lenta, considere utilizar 3G o 4G',
-        //     () => null,
-        //     'Error en la conexión', 'Reintentar');
+        Application.go(Home, {})
     },
 
     onBackButton(){
@@ -44,5 +49,4 @@ window.app = {
     }
 };
 
-window.connFlag = true;
 window.app.initialize();

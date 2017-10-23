@@ -66,9 +66,10 @@ gulp.task("cordova-watch", function() {
         __dirname + "/www/**/*.html",
         __dirname + "/www/**/*.css",
         __dirname + "/www/**/*.js",
-        __dirname + "/src/**/*.html",
         __dirname + "/src/**/*.css",
-        __dirname + "/src/**/*.js"
+        __dirname + "/src/**/*.js",
+        __dirname + "/src/**/**/*.js",
+        __dirname + "/src/**/**/*.css"
     ], ["cordova-prepare"]);
 });
 

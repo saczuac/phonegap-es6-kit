@@ -1,0 +1,26 @@
+[
+    {
+        "pk": 1,
+        "length": 5,
+        "name": "Puestos Sanitarios",
+        "description": "Brindan al peregrino asistencia m\u00e9dica en forma gratuita, y ayuda para suavizar los pies."
+    },
+    {
+        "pk": 3,
+        "length": 5,
+        "name": "Puestos de Apoyo",
+        "description": "Brindan alimentos y bebidas de forma gratuita. Tambi\u00e9n brindan apoyo al peregrino y atienden inquietudes."
+    },
+    {
+        "pk": 4,
+        "length": 5,
+        "name": "Paradas de la Virgen",
+        "description": "En el mapa podr\u00e1s visualizar las paradas de la imagen de cabecera bajo este icono."
+    },
+    {
+        "pk": 5,
+        "length": 5,
+        "name": "Puestos de Hidrataci\u00f3n",
+        "description": "En el mapa podr\u00e1s visualizar los puestos de hidrataci\u00f3n bajo este icono."
+    }
+]

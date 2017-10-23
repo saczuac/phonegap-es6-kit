@@ -3,3 +3,4 @@ plugins/*
 node_modules
 www/js/index.js
 www/js/index.js.map
+src/lib/config.js

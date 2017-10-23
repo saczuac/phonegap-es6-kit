@@ -1,7 +1,18 @@
 const Config = {
     init() {
-    	this.serverUrl = 'http://localhost:8000'
-    	this.clearInterval = 6000 //Interval to clear all in localforage (data from api urls)
+    	this.serverUrl = 'http://localhost:8000' // URL where server app is running
+    	this.timeout = 3 // Number of seconds before a timeout function is triggered
+    	this.connTries = 3
+    	this.validStorage = 1800 //Number of seconds the caché storage from APIs is valid
+    	this.resources = [
+    		// 'resources',
+    		// 'from',
+    		// 'server',
+    		'notifications'
+    	]
+
+        this.lockOrientation = true
+        this.productionJSPath: '/home/sac/.dpgd/template-app/build'
     },
 };
 

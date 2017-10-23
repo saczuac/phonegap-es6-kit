@@ -1,17 +1,84 @@
+/* 
+    Fonts
+ */
+
+@font-face {
+    font-family: DINNextRoundedLTPro-Light;
+    src: url(../fonts/din/DINNextRoundedLTPro-Light.otf);
+}
+
+@font-face {
+    font-family: DINNextRoundedLTPro-Regular;
+    src: url(../fonts/din/DINNextRoundedLTPro-Regular.otf);
+}
+
+@font-face {
+    font-family: DINNextRoundedLTPro-Bold;
+    src: url(../fonts/din/DINNextRoundedLTPro-Bold.otf);
+}
+
+html {
+    font-family:"DIN Next Rounded LT W01 Regular" !important;
+}
+
+/*
+	Custom Styles
+*/
+
 body, html {
 	background-color: #126BBF;
 }
 
-h1 { margin-top: 2em; color: #ffffff; font-family: 'Raleway',sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
+h1 { margin-top: 2em; color: #ffffff; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
 
 
-h2 { color: #ffffff; font-family: 'Raleway',sans-serif; font-size: 30px; font-weight: 800; line-height: 36px; margin: 0 0 24px; text-align: center; }
+h2 { color: #ffffff; font-size: 30px; font-weight: 800; line-height: 36px; margin: 0 0 24px; text-align: center; }
 
 
-p { color: #f8f8f8; font-family: 'Raleway',sans-serif; font-size: 18px; font-weight: 500; line-height: 32px; margin: 0 0 24px; }
+p { color: #f8f8f8; font-size: 18px; font-weight: 500; line-height: 32px; margin: 0 0 24px; }
 
 
 a { color: #c8c8c8; text-decoration: underline; }
 
 
 a:hover { color: #1c1c1c; text-decoration: underline; }
+
+/*
+	Loader
+*/
+
+#loader {
+    display: none;
+    margin-top:-6px;
+}
+
+.loader {
+  display: none;
+  top:0;
+  height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #ddd;
+  z-index: 999999999 !important;
+}
+
+.loader:before{
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  background-color: #1A9A9B;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    from {left: -200px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% { left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
+}

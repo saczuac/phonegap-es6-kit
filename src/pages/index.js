@@ -1,7 +1,5 @@
-import Home from 'pages/Home';
-import Loader from 'pages/Loader';
+import Home from 'pages/Home/Home';
 
 export default {
-	Home,
-	Loader
+	Home
 };
