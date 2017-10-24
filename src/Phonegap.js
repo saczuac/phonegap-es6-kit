@@ -35,7 +35,11 @@ window.app = {
             },
             Config.timeout * 1000)
 
-        } 
+        } else {
+            if (Config.hasNotifications) {
+                Notifications.init()
+            }
+        }
         Application.init();
         Application.go(Home, {})
     },

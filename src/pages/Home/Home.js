@@ -3,8 +3,8 @@ import h from 'hyperscript';
 import render from 'lib/render';
 import Store from 'lib/store';
 import pages from 'pages';
-import classnames from 'classnames';
-import styles from 'pages/Home/Home.css';
+import 'pages/Home/Home.css';
+import classNames from 'classnames';
 
 
 const Home = {
@@ -36,13 +36,13 @@ const Home = {
         //     Home.setAttrs()
         // })
 
-        let animationStyles = classnames(styles.high, {
-            [styles.great]: (Math.random() >= 0.5) //Random Boolean
+        let animationStyles = classNames('high', 'home', {
+            ['great']: (Math.random() >= 0.5) //Random Boolean
         });
 
-        animationStyles = animationStyles.replace(/\s+/g, '.').toLowerCase();
+        animationStyles = animationStyles.replace(/\s+/g, '.');
 
-        const html = h(`div.home.${animationStyles}`, [
+        const html = h(`div.${animationStyles}`, [
             h('h1', 'PHONEGAP TEMPLATE ROCKS!'),
             h('p', 'By Sacha Spinelli')
         ])

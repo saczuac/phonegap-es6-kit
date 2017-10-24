@@ -2,6 +2,7 @@ const path = require('path');
 const gulp = require('gulp');
 const appfy = require('gulp-appfy-tasks');
 const del = require('del');
+var browserSync = require('browser-sync');
 
 const isProduction = process.env && process.env.NODE_ENV === 'production';
 
@@ -36,12 +37,13 @@ appfy.init(__dirname, {
             paths: [path.join(__dirname, 'src')]
         }
     },
-    'postcss': {
-        'sourcemap': true,
-        'plugins': null,
-        'options': {}
+    "postcss": {
+      "sourcemap": true,
+      "plugins": null,
+      "options": {}
     }
 });
+
 
 appfy.defineTasks();
 
@@ -55,21 +57,22 @@ gulp.task('clean', cb => {
     cb();
 });
 
-var exec = require("child_process").exec;
+// var exec = require("child_process").exec;
 
-gulp.task("cordova-prepare", function() {
-   exec("cordova prepare");
-});
+// gulp.task("cordova-prepare", function() {
+//    exec("cordova prepare");
+// });
 
-gulp.task("cordova-watch", function() {
-    gulp.watch([
-        __dirname + "/www/**/*.html",
-        __dirname + "/www/**/*.css",
-        __dirname + "/www/**/*.js",
-        __dirname + "/src/**/*.css",
-        __dirname + "/src/**/*.js",
-        __dirname + "/src/**/**/*.js",
-        __dirname + "/src/**/**/*.css"
-    ], ["cordova-prepare"]);
-});
+// gulp.task("watch-files", cb => {
+//     gulp.watch([
+//         __dirname + "/www/**/*.html",
+//         __dirname + "/www/**/*.css",
+//         __dirname + "/www/**/*.js",
+//         __dirname + "/src/**/*.css",
+//         __dirname + "/src/**/*.js",
+//         __dirname + "/src/**/**/*.js",
+//         __dirname + "/src/**/**/*.css"
+//     ], ["cordova-prepare"]);
 
+//     cb();
+// });

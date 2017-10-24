@@ -7,6 +7,9 @@ const headers = {
     //'HEADER': 'VALUE'
 }
 
+if (Config.serverUrl == undefined)
+    Config.init()
+
 const get = (url) => {
     showLoader()
     return localforage.
@@ -56,9 +59,8 @@ const Store = {
     baseUrl
 };
 
-let resources = Config.resources
 
-resources.forEach(resource => {
+Config.resources.forEach(resource => {
     Store[resource] = (id) => getResource(`api/${resource}s/${id}`);
     Store[`${resource}s`] = () => getResource(`api/${resource}s`);
 });

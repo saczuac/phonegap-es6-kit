@@ -1,4 +1,3 @@
-
 .great {
 	animation: bounceIn linear 2s;
 	animation-fill-mode: forwards;
@@ -23,7 +22,8 @@
   }
 }
 
-
 .high {
   font-size: 20em;
+  margin-top: 50px; 
 }
+

@@ -31,14 +31,18 @@ const Application = {
                 localforage.setItem('init', true)
                 // first time the app is opened, load localforage data
                 Config.resources.forEach((resource) => {
-                    Application.fetchLocal(`extra/${resource}s.json`)
-                        .then((response, status) => response.json())
-                        .then(response => {
-                            let url = `${Config.serverUrl}/api/${resource}s/`
-                            let dueDate = new Date()
-                            dueDate.setSeconds(dueDate.getSeconds() + Config.validStorage)
-                            localforage.setItem(url, [response, dueDate])
-                        })
+                    try {
+                        Application.fetchLocal(`extra/${resource}s.json`)
+                            .then((response, status) => response.json())
+                            .then(response => {
+                                let url = `${Config.serverUrl}/api/${resource}s/`
+                                let dueDate = new Date()
+                                dueDate.setSeconds(dueDate.getSeconds() + Config.validStorage)
+                                localforage.setItem(url, [response, dueDate])
+                            }) 
+                    } catch(e) {
+                        console.log(e)
+                    }
                 })
             }
         })
