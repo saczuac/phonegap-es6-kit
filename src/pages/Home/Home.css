@@ -22,8 +22,21 @@
   }
 }
 
-.high {
-  font-size: 20em;
-  margin-top: 50px; 
+.search {
+  font-size: 12pt;
+  margin-left: 2em;
+  color: #1E88E5;
 }
 
+.home {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #1976D2;
+}
+
+p {
+  color: #0D47A1
+}

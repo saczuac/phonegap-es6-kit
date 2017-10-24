@@ -3,6 +3,7 @@ export default {
 	showLoader: () => $('#loader').show(),
     hideLoader: () => $("#loader").hide(),
     openSocialNetwork: (url) => window.open(url, "_system"),
+    scrollUp: () =>  $('body').scrollTop(0),
 
     calculatePosition: (onSuccess, onError) => {
         navigator.geolocation.getCurrentPosition(

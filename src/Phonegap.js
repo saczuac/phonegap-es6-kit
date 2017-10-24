@@ -45,11 +45,7 @@ window.app = {
     },
 
     onBackButton(){
-        if (Application.current.page == Home) {
-            navigator.app.exitApp();
-        } else {              
-            Application.back();
-        }
+        Application.back();
     }
 };
 

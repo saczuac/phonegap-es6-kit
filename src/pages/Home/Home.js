@@ -44,7 +44,12 @@ const Home = {
 
         const html = h(`div.${animationStyles}`, [
             h('h1', 'PHONEGAP TEMPLATE ROCKS!'),
-            h('p', 'By Sacha Spinelli')
+            h('p', 'By Sacha Spinelli'),
+            h('a.search', 'Search something', {
+                onclick: () => {
+                    Application.go(pages.Search, {})
+                }
+            })
         ])
 
         render(html, Application.containers.root)

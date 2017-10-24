@@ -1,4 +1,4 @@
-import { sameObject } from 'lib/util';
+import { samePage } from 'lib/util';
 import localforage from 'localforage';
 import Config from 'lib/config';
 
@@ -9,6 +9,8 @@ const Application = {
 
     containers: {
         root: document.getElementById('root'),
+        search: ()=> document.getElementById('search'),
+        results: ()=> document.getElementById('results'),
     },
 
     fetchLocal(url) {
@@ -28,21 +30,28 @@ const Application = {
     loadFirstTime() {
         localforage.getItem('init').then(value => {
             if (!value) {
-                localforage.setItem('init', true)
                 // first time the app is opened, load localforage data
+                localforage.setItem('init', true)
                 Config.resources.forEach((resource) => {
-                    try {
                         Application.fetchLocal(`extra/${resource}s.json`)
-                            .then((response, status) => response.json())
+                            .then((response, status) => {
+                                if (response.ok)
+                                    return response.json()
+                                return response
+                             })
                             .then(response => {
-                                let url = `${Config.serverUrl}/api/${resource}s/`
-                                let dueDate = new Date()
-                                dueDate.setSeconds(dueDate.getSeconds() + Config.validStorage)
-                                localforage.setItem(url, [response, dueDate])
-                            }) 
-                    } catch(e) {
-                        console.log(e)
-                    }
+                                if (response.ok) {
+                                    let url = `${Config.serverUrl}/api/${resource}s/`
+                                    let dueDate = new Date()
+                                    dueDate.setSeconds(dueDate.getSeconds() + Config.validStorage)
+                                    localforage.setItem(url, [response, dueDate])
+                                } else {
+                                    throw `No se encuentra el archivo ${resource}s.json, no se cargó en caché`;
+                                }
+                            }).catch(error => {
+                                localforage.setItem('init', false)
+                                console.log('Error:', error)
+                            })
                 })
             }
         })
@@ -57,20 +66,22 @@ const Application = {
         return Application
     },
 
-    go(page, props = {}) {
+    go(page, props = {}, scrollTop = 0) {
+        let scroll = $('body').scrollTop()
 
         const next = {
             page,
             props
         };
 
-        if (Application.current && !sameObject(Application.current, next)) {
-            Application.historyStack.push(Application.current);
+        if (Application.current && !samePage(Application.current, next)) {
+            Application.historyStack.push([Application.current, scroll]);
         }    
         Application.current = next;
 
         page.init();
         page.render(props);
+        setTimeout(() => { $('body').scrollTop(scrollTop) }, 300)
 
         return Application;
     },
@@ -78,13 +89,17 @@ const Application = {
     back(props = false) {
         if (Application.historyStack.length > 0) {
             const prev = Application.historyStack.pop();
-            let newProps = props || prev.props;
-            Application.current = prev;
+            let prevPage = prev[0]
+            let scroll = prev[1]
+            let newProps = props || prevPage.props;
 
-            Application.go(prev.page, {
+            Application.current = prevPage;
+
+            Application.go(prevPage.page, {
                 ...newProps,
-            });
-        }
+            }, scroll);
+        } else
+            navigator.app.exitApp()
 
         return Application;
     }

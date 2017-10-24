@@ -65,4 +65,7 @@ Config.resources.forEach(resource => {
     Store[`${resource}s`] = () => getResource(`api/${resource}s`);
 });
 
+if (Config.search)
+    Store['search'] = (query) => getResource(`api/search/${query}`);
+
 export default Store;
