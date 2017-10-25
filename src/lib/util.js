@@ -2,7 +2,8 @@ export default {
 	samePage: (first, second) => first.page.name == second.page.name,
 	showLoader: () => $('#loader').show(),
     hideLoader: () => $("#loader").hide(),
-    openSocialNetwork: (url) => window.open(url, "_system"),
+    sanitizeStyles: styles => styles.replace(/\s+/g, '.'),
+    openSocialNetwork: url => window.open(url, "_system"),
     scrollUp: () =>  $('body').scrollTop(0),
 
     calculatePosition: (onSuccess, onError) => {

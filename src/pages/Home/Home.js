@@ -5,6 +5,7 @@ import Store from 'lib/store';
 import pages from 'pages';
 import 'pages/Home/Home.css';
 import classNames from 'classnames';
+import { sanitizeStyles } from 'lib/util';
 
 
 const Home = {
@@ -36,20 +37,23 @@ const Home = {
         //     Home.setAttrs()
         // })
 
-        let animationStyles = classNames('high', 'home', {
+        let homeStyles = classNames('high', 'home');
+
+        let animationStyles = classNames({
             ['great']: (Math.random() >= 0.5) //Random Boolean
         });
 
-        animationStyles = animationStyles.replace(/\s+/g, '.');
-
-        const html = h(`div.${animationStyles}`, [
-            h('h1', 'PHONEGAP TEMPLATE ROCKS!'),
-            h('p', 'By Sacha Spinelli'),
-            h('a.search', 'Search something', {
-                onclick: () => {
-                    Application.go(pages.Search, {})
-                }
-            })
+        const html = h(`div.${sanitizeStyles(homeStyles)}`, [
+                        pages.Menu.draw(),
+                        h('div#container', [
+                            h(`h1.${sanitizeStyles(animationStyles)}`, 'PHONEGAP TEMPLATE ROCKS!'),
+                            h('p', 'By Sacha Spinelli'),
+                            h('a.search', 'Search something', {
+                                onclick: () => {
+                                    Application.go(pages.Search, {})
+                                }
+                            }),
+                        ]),
         ])
 
         render(html, Application.containers.root)
