@@ -43,8 +43,10 @@ const Home = {
             ['great']: (Math.random() >= 0.5) //Random Boolean
         });
 
+        let aside = false // If true menu shows aside
+
         const html = h(`div.${sanitizeStyles(homeStyles)}`, [
-                        pages.Menu.draw(),
+                        pages.Menu.draw(aside),
                         h('div#container', [
                             h(`h1.${sanitizeStyles(animationStyles)}`, 'PHONEGAP TEMPLATE ROCKS!'),
                             h('p', 'By Sacha Spinelli'),
