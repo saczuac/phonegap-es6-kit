@@ -4,8 +4,8 @@ import render from 'lib/render';
 import Store from 'lib/store';
 import pages from 'pages';
 import 'pages/Home/Home.css';
-import classNames from 'classnames';
 import { sanitizeStyles } from 'lib/util';
+import classNames from 'classnames';
 
 
 const Home = {
@@ -38,17 +38,12 @@ const Home = {
         // })
 
         let homeStyles = classNames('high', 'home');
-
-        let animationStyles = classNames({
-            ['great']: (Math.random() >= 0.5) //Random Boolean
-        });
-
         let aside = true // If true menu shows aside
 
         const html = h(`div.${sanitizeStyles(homeStyles)}`, [
                         pages.Menu.draw(aside),
                         h('div#container', [
-                            h(`h1.${sanitizeStyles(animationStyles)}`, 'PHONEGAP TEMPLATE ROCKS!'),
+                            h('h1.great', 'PHONEGAP TEMPLATE ROCKS!'),
                             h('p', 'By Sacha Spinelli'),
                             h('a.search', 'Search something', {
                                 onclick: () => {

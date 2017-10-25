@@ -2,7 +2,6 @@ const path = require('path');
 const gulp = require('gulp');
 const appfy = require('gulp-appfy-tasks');
 const del = require('del');
-var browserSync = require('browser-sync');
 
 const isProduction = process.env && process.env.NODE_ENV === 'production';
 
