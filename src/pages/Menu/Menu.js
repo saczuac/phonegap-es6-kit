@@ -31,7 +31,6 @@ const Menu = {
 
         if (aside) {
             html = h('div.sidenav#sidenav', [
-                            h('a.closebtn', {onclick: event => Menu.closeNav()}),
                             h('a', {onclick: event => Application.go(pages.Search, {})}, 'Search'),
                             h('a', {onclick: event => Application.go(pages.Search, {})}, 'Phonegap'),
                             h('a', {onclick: event => Application.go(pages.Search, {})}, 'Template'),

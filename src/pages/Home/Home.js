@@ -43,7 +43,7 @@ const Home = {
             ['great']: (Math.random() >= 0.5) //Random Boolean
         });
 
-        let aside = false // If true menu shows aside
+        let aside = true // If true menu shows aside
 
         const html = h(`div.${sanitizeStyles(homeStyles)}`, [
                         pages.Menu.draw(aside),
