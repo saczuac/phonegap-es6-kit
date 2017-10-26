@@ -13,12 +13,12 @@ import Paginator from 'lib/Paginator/Paginator'
 const Home = {
     name: 'Home',
 
-    init(collection = ['a', 'b', 'c', 'd', 'f', 'g', 'h']) {
+    init(values = [[1, '500 $', 'Duilio'], [4, '200 $', 'Gera'], [5, '0 $', 'Enola'], [6, '10 $', 'Emi'], [8, '50$', 'Martin']]) {
 	    this.registerEvents();
         // Store.projects().then(projects => {
             // this.paginator = new Paginator(projects, Home)
         // })
-        this.paginator = new Paginator(collection, Home)
+        this.paginator = new Paginator(values, Home)
     },
 
     registerEvents() {
@@ -27,7 +27,7 @@ const Home = {
 
     render(props = {page:1}) {
         let homeStyles = classNames('high', 'home');
-        let elements = Home.paginator.getPage(props.page)
+        let values = Home.paginator.getPage(props.page)
 
         const html = h(`div.${sanitizeStyles(homeStyles)}`, [
                         pages.Menu.draw(Config.aside),
@@ -39,7 +39,7 @@ const Home = {
                                     Application.go(pages.Search, {})
                                 }
                             }),
-                            h('div.collection', elements.map(e => h('span', `${e}, `)),),
+                            pages.Table.draw('Table of Whatever', {columns:['Acount', 'Money', 'User'], values: values}),
                             Home.paginator.drawPages(),
                         ]),
         ])

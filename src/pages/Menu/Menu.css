@@ -101,6 +101,7 @@
 .background {
   opacity: 0.5 !important;
   transition: opacity .2s;
+  pointer-events: none;
 }
 
 

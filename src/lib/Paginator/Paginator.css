@@ -1,8 +1,8 @@
 .pg-container {
     bottom: 0;
-    position: fixed;
     width: 100%;
     text-align: center;
+    margin-top: 2em;
 }
 
 .page {
