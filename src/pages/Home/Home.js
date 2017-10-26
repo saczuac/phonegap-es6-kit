@@ -15,6 +15,9 @@ const Home = {
 
     init(collection = ['a', 'b', 'c', 'd', 'f', 'g', 'h']) {
 	    this.registerEvents();
+        // Store.projects().then(projects => {
+            // this.paginator = new Paginator(projects, Home)
+        // })
         this.paginator = new Paginator(collection, Home)
     },
 
@@ -23,23 +26,6 @@ const Home = {
     },
 
     render(props = {page:1}) {
-        // Store.projects().then(projects => {
-        //     const html =
-        //     h('div.WHITE', [
-        //         h('div.home-title.header-home.header', h('span.span-title', 'Proyectos DPGD')),
-        //         projects.map(project =>
-        //             h(`div.home-link`, [ h(`span.${project.color}.block`, '') , h('span.title-link', project.name, {
-        //                 onclick: (event) => {
-        //                     Application.go(Project, {id: project.id})
-        //                 }
-        //             })]
-        //         ))
-        //     ])
-
-        //     render(html, Application.containers.root)
-        //     Home.setAttrs()
-        // })
-
         let homeStyles = classNames('high', 'home');
         let elements = Home.paginator.getPage(props.page)
 

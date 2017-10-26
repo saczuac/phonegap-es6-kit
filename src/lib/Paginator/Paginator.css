@@ -27,51 +27,6 @@
     width: 18% !important;
 }
 
-
-.btn-first-pg {
-    background-image: url('/img/bot_first.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 1em;
-}
-
-.btn-first-inactive {
-    background-image: url('/img/bot_first_none.png') !important;
-}
-
-.btn-prev-pg {
-    background-image: url('/img/bot_prev.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 1em;
-}
-
-.btn-prev-inactive {
-    background-image: url('/img/bot_prev_none.png') !important;
-}
-
-.btn-next-pg{
-    background-image: url('/img/bot_next.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 1em;
-}
-
-.btn-next-inactive {
-    background-image: url('/img/bot_next_none.png') !important;
-}
-
-.btn-last-pg {
-    background-image: url('/img/bot_last.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 1em;
-}
-
-.btn-last-inactive {
-    background-image: url('/img/bot_last_none.png') !important;
-}
-
 .hidden{
     display: none;
 }
