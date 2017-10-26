@@ -40,3 +40,9 @@
 p {
   color: #0D47A1
 }
+
+.collection {
+  margin-top: 3em;
+  text-align: center;
+  font-size: 16pt;
+}

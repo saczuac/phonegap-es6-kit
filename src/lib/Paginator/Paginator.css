@@ -1,0 +1,127 @@
+.pg-container {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+
+.page {
+    font-size: 10pt;
+    color: #5F5F5F;
+    height: 1.5em;
+}
+
+.paginator {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+.buttons-pag{
+    width: 20%;
+    font-size: 12pt;
+    color: #5F5F5F;
+}
+
+.button-hidden {
+    width: 18% !important;
+}
+
+
+.btn-first-pg {
+    background-image: url('/img/bot_first.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1em;
+}
+
+.btn-first-inactive {
+    background-image: url('/img/bot_first_none.png') !important;
+}
+
+.btn-prev-pg {
+    background-image: url('/img/bot_prev.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1em;
+}
+
+.btn-prev-inactive {
+    background-image: url('/img/bot_prev_none.png') !important;
+}
+
+.btn-next-pg{
+    background-image: url('/img/bot_next.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1em;
+}
+
+.btn-next-inactive {
+    background-image: url('/img/bot_next_none.png') !important;
+}
+
+.btn-last-pg {
+    background-image: url('/img/bot_last.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1em;
+}
+
+.btn-last-inactive {
+    background-image: url('/img/bot_last_none.png') !important;
+}
+
+.hidden{
+    display: none;
+}
+
+.prev:before {
+    content: "\27e8";
+}
+
+.next:before {
+    content: "\27e9";
+}
+
+.next {
+    padding-bottom: 0.4em !important;
+}
+
+.prev {
+    padding-bottom: 0.4em !important;
+}
+
+.paginator a {
+    color: black;
+    float: left;
+    padding: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 auto;
+}
+
+.paginator a.active {
+    background-color: #0D47A1;
+    color: white;
+    border: 1px solid #0D47A1;
+}
+
+.paginator a:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.paginator a:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.paginator a:hover:not(.active) {background-color: #ddd;}
+
+.disabled {
+    background-color: #ddd;
+}
