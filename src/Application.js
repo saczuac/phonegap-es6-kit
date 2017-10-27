@@ -1,6 +1,7 @@
 import { samePage, showToast } from 'lib/util';
 import localforage from 'localforage';
 import Config from 'lib/config';
+import Home from 'pages/Home/Home';
 
 const Application = {
     historyStack: null,
@@ -66,6 +67,7 @@ const Application = {
         setInterval(()=> {
             Application.backTimes = 0
         }, 1000)
+        Application.go(Home, {})
         return Application
     },
 

@@ -1,6 +1,5 @@
 import Application from 'Application'
 import Config from 'lib/config'
-import Home from 'pages/Home/Home';
 import Notifications from 'lib/Notifications';
 import { showAlert } from 'lib/util';
 import Store from 'lib/store';
@@ -41,7 +40,6 @@ window.app = {
             }
         }
         Application.init();
-        Application.go(Home, {})
     },
 
     onBackButton(){

@@ -4,8 +4,8 @@ import Table from 'pages/Table/Table';
 import Search from 'pages/Search/Search';
 
 export default {
-	Home,
+	Table,
 	Search,
 	Menu,
-	Table
+	Home
 };

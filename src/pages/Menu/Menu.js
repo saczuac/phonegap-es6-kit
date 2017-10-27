@@ -1,9 +1,11 @@
-import Application from 'Application';
-import h from 'hyperscript';
-import pages from 'pages';
-import 'pages/Menu/Menu.css';
-import classNames from 'classnames';
-import { sanitizeStyles, openSocialNetwork } from 'lib/util';
+import Application from 'Application'
+import h from 'hyperscript'
+import pages from 'pages'
+import Home from 'pages/Home/Home'
+import 'pages/Menu/Menu.css'
+import classNames from 'classnames'
+import Config from 'lib/config'
+import { sanitizeStyles, openSocialNetwork } from 'lib/util'
 
 
 const Menu = {
@@ -23,7 +25,7 @@ const Menu = {
             Menu.unlockScroll()
     },
 
-    lockScroll(){
+    lockScroll() {
         let html = $('html'); 
         let body = $('body'); 
         var initWidth = html.outerWidth();
@@ -43,7 +45,7 @@ const Menu = {
         body.css({'margin-right': marginR,'margin-bottom': marginB});
     },
 
-    unlockScroll(){
+    unlockScroll() {
         let html = $('html');
         let body = $('body');
         html.css('overflow', html.data('previous-overflow'));
@@ -66,19 +68,26 @@ const Menu = {
 
         if (aside) {
             html = h('div.sidenav#sidenav', [
-                            h('a', {onclick: event => Application.go(pages.Search, {})}, 'Search'),
-                            h('a', {onclick: event => Application.go(pages.Search, {})}, 'Phonegap'),
-                            h('a', {onclick: event => Application.go(pages.Search, {})}, 'Template'),
-                            h('a', {onclick: event => Application.go(pages.Search, {})}, 'Is Amazing'),
+                            h('a', {
+                                onclick: (event) => {
+                                     Application.go(Home, {})
+                                }
+                            }, 'Home'),
+                            Config.pages.map(page => h('a', {
+                                onclick: (event) => {
+                                     Application.go(window['pages'][page], {})
+                                }
+                            }, page),),
                     ])
 
         } else {
             html = h('div.menu#menu', [
-                            h('div.item', {onclick: event => Application.go(pages.Search, {})}, h('span.span-menu', 'Search')),
-                            h('div.item', {onclick: event => Application.go(pages.Search, {})}, h('span.span-menu', 'Phonegap')),
-                            h('div.item', {onclick: event => Application.go(pages.Search, {})}, h('span.span-menu', 'Template')),
-                            h('div.item', {onclick: event => Application.go(pages.Search, {})}, h('span.span-menu', 'Is Amazing')),
-
+                            h('div.item', {onclick: event => Application.go(Home, {})}, h('span.span-menu', 'Home')),
+                            Config.pages.map(page => h('div.item', {
+                                onclick: (event) => {
+                                     Application.go(window['pages'][page], {})
+                                }
+                            }, h('span.span-menu', page),),),
                             h('div.social-networks', [
                                 h('img.item-img', {src: 'img/menu_ytube.png', onclick: e => openSocialNetwork('http://www.youtube.com/channel/UC20fzcv9v36W8zWEjgZp7Wg')}),
                                 h('img.item-img', {src: 'img/menu_tw.png', onclick: e => openSocialNetwork('http://twitter.com/DeportesGBA')}),
