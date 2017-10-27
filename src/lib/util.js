@@ -17,5 +17,17 @@ export default {
     showAlert: (message="", cb) => {
         navigator.notification.alert(message, cb, 'Aviso', 'Reintentar');
     },
+    showToast:(message="Aviso") => {
+          window.plugins.toast.showWithOptions(
+            {
+              message: message,
+              duration: 3000,
+              position: "bottom",
+              addPixelsY: -40  // added a negative value to move it up a bit (default 0)
+            },
+            null, // optional (onSucess cb)
+            null    // optional (onError cb)
+          )
+    },
 };
 

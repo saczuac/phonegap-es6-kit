@@ -1,10 +1,10 @@
-import { samePage } from 'lib/util';
+import { samePage, showToast } from 'lib/util';
 import localforage from 'localforage';
 import Config from 'lib/config';
 
 const Application = {
     historyStack: null,
-
+    backTimes: 0,
     current: null,
 
     containers: {
@@ -63,6 +63,9 @@ const Application = {
         Application.current = null
         window.localforage = localforage
         Application.loadFirstTime()
+        setInterval(()=> {
+            Application.backTimes = 0
+        }, 1000)
         return Application
     },
 
@@ -98,8 +101,13 @@ const Application = {
             Application.go(prevPage.page, {
                 ...newProps,
             }, scroll);
-        } else
-            navigator.app.exitApp()
+        } else {
+            Application.backTimes = Application.backTimes + 1
+            if (Application.backTimes == 2)
+                navigator.app.exitApp()
+            else
+                showToast('Presione atrás dos veces seguidas para salir')
+        }
 
         return Application;
     }
