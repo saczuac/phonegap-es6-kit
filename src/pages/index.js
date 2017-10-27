@@ -7,5 +7,5 @@ export default {
 	Table,
 	Search,
 	Menu,
-	Home
+	Home,
 };

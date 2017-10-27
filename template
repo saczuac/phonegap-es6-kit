@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+const program = require('./commands/program');
+const commands = require('./commands/index');
+
+Object.keys(commands).forEach(key => program.registerCommand(commands[key]));
+
+program.parse(process.argv);
+
+if (!process.argv.slice(2).length) {
+    program.outputHelp();
+}

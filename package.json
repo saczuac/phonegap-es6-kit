@@ -28,7 +28,9 @@
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
     "npm-run-all": "^4.0.2",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0"
   },
   "browserify": {
     "transform": [
@@ -71,6 +73,7 @@
     "hyperscript": "^2.0.2",
     "jquery": "^3.2.1",
     "localforage": "^1.4.3",
+    "commander": "^2.9.0",
     "whatwg-fetch": "^1.0.0"
   },
   "author": "Sacha Spinelli",
