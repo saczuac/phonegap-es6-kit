@@ -5,7 +5,7 @@
 
 ### Steps
  
-+ `git clone git@10.25.253.3:DPD/phonegap-template.git`
++ `git clone git@github.com:saczuac/phonegap-es6-kit.git`
 + `mv phonegap-template project-name`
 + `cd project-name`
 + `git remote rm origin` => Change origin to the remote repo
